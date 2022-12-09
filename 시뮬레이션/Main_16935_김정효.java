@@ -26,11 +26,11 @@ public class Main_16935_김정효 {
 			}
 		}
 		
-		// 회전
 		st = new StringTokenizer(br.readLine());
 		for (int i = 0; i < r; i++) {
-			cycle(Integer.parseInt(st.nextToken()));
-			copy();
+			cycle(Integer.parseInt(st.nextToken()));	// 배열 돌리기
+			map = new int[n][m];	// n, m 바꼈을 경우에 대비해서 배열 크기를 초기화
+			copy();	// result를 map에 복사
 		}
 		print();	// 출력
 	}
@@ -62,6 +62,7 @@ public class Main_16935_김정효 {
 
 	private static void one() {
 		result = new int[n][m];
+		
 		for (int i = 0; i < n/2; i++) {
 			for (int j = 0; j < m; j++) {
 				result[n-i-1][j] = map[i][j];
@@ -72,6 +73,7 @@ public class Main_16935_김정효 {
 
 	private static void two() {
 		result = new int[n][m];
+		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m/2; j++) {
 				result[i][m-j-1] = map[i][j];
@@ -81,59 +83,70 @@ public class Main_16935_김정효 {
 	}
 
 	private static void three() {
-		result = new int[m][n];
+		// n, m 바꾸기
+		int temp = n;
+		n = m;
+		m = temp;
+		result = new int[n][m];
+		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				result[j][n-1-i] = map[i][j];
+				result[i][m-1-j] = map[j][i];
 			}
 		}
 	}
 
 	private static void four() {
-		result = new int[m][n];
+		int temp = n;
+		n = m;
+		m = temp;
+		result = new int[n][m];
+		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				result[m-1-j][i] = map[i][j];
+				result[n-1-i][j] = map[j][i];
 			}
 		}
 	}
 	
 	private static void five() {
 		result = new int[n][m];
+		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				// 1
 				if (i<n/2 && j<m/2)
 					result[i][j+m/2] = map[i][j];
-				// 2
+				// 4
 				else if (i>=n/2 && j<m/2)
-					result[i+n/2][j] = map[i][j];
+					result[i-n/2][j] = map[i][j];
 				// 3
 				else if (i>=n/2 && j>=m/2)
 					result[i][j-m/2] = map[i][j];
-				// 4
+				// 2
 				else
-					result[i-n/2][j] = map[i][j];
+					result[i+n/2][j] = map[i][j];
 			}
 		}
 	}
 
 	private static void six() {
 		result = new int[n][m];
+		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				// 1
 				if (i<n/2 && j<m/2)
 					result[i+n/2][j] = map[i][j];
-				// 2
+				// 4
 				else if (i>=n/2 && j<m/2)
-					result[i][j-m/2] = map[i][j];
+					result[i][j+m/2] = map[i][j];
 				// 3
 				else if (i>=n/2 && j>=m/2)
 					result[i-n/2][j] = map[i][j];
-				// 4
+				// 2
 				else
-					result[i][j+m/2] = map[i][j];
+					result[i][j-m/2] = map[i][j];
 			}
 		}
 	}
