@@ -45,10 +45,12 @@ public class Main_17406_김정효 {
 	private static void perm(int count) {
 		// k개의 순서를 다 정하면
 		if (count == k) {
+                        for (int i=0; i<k; i++){
 			// 배열 돌리기
-			cycle();
+			cycle(i);
 			// 돌린 결과를 map에 복사
 			copy();
+}
 		}
 		
 		for (int i = 0; i < k; i++) {
@@ -60,11 +62,11 @@ public class Main_17406_김정효 {
 		}
 	}
 
-	private static void cycle() {
-		int start_r = list[][];
-		int start_c = list[][];
-		int end_r = list[][]; 
-		int end_c = list[][];
+	private static void cycle(int index) {
+		int start_r = list[index][];
+		int start_c = list[index][];
+		int end_r = list[index][]; 
+		int end_c = list[index][];
 		int count = Math.min(end_r-start_r, end_c-start_c) / 2;
 		// 하우상좌
 		int dx[] = {1, 0, -1, 0};
