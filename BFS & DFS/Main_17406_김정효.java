@@ -108,7 +108,7 @@ public class Main_17406_김정효 {
 			}
 			result = Math.min(sum, result);
 		}
-		return result;
+		return result;;
 	}
 	
 	private static void copy(int[][] arr) {
