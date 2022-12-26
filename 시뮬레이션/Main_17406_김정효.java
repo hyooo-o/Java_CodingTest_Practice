@@ -44,14 +44,16 @@ public class Main_17406_김정효 {
 		if (count == k) {
 			for (int i = 0; i < k; i++) {
 				// 배열 돌리기
-				cycle(i);
+				cycle(order[i]);
 				// 돌린 결과를 map에 복사
-				copy(change);
+				copy(map, change);
 			}
 			// 이 순서에 대한 최솟값을 구해 전체 최솟값 구하기
 			last = Math.min(last, min());
 			// map을 원래 배열로 돌려 놓기 (origin 배열을 map으로 복사)
-			copy(origin);
+			copy(map, origin);
+			copy(change, map);
+			return;
 		}
 		
 		for (int i = 0; i < k; i++) {
@@ -65,32 +67,39 @@ public class Main_17406_김정효 {
 
 	private static void cycle(int index) {
 		// r c s
-		int start_r = list[index][0] - list[index][2];	// r-s
-		int start_c = list[index][1] - list[index][2];	// c-s
-		int end_r = list[index][0] + list[index][2]; 		// r+s
-		int end_c = list[index][1] + list[index][2];		// c+s
-		int count = Math.min(end_r-start_r, end_c-start_c) / 2;
+		int start_x = list[index][0] - list[index][2];	// r-s
+		int start_y = list[index][1] - list[index][2];	// c-s
+		int end_x = list[index][0] + list[index][2]; 		// r+s
+		int end_y = list[index][1] + list[index][2];		// c+s
+		int count = Math.min(end_x-start_x, end_y-start_y) / 2;
 		// 하우상좌
 		int dx[] = {1, 0, -1, 0};
 		int dy[] = {0, 1, 0, -1};
 		
 		// 돌릴 배열 개수
 		for (int i = 0; i < count; i++) {
-			int x = start_r + i -1;
-			int y = start_c + i -1;
+			// 돌릴 배열의 시작 좌표
+			int x = start_x + i -1;
+			int y = start_y + i -1;
+			// 시작 좌표의 값 저장
 			int temp = map[x][y];
+			// 변하는 x, y 값
+			int cur_x = start_x + i -1;
+			int cur_y = start_y + i -1;
 			for (int d = 0; d < 4; d++) {
-				int nx = x + dx[d];
-				int ny = y + dy[d];
-				while (nx>=start_r + i -1 && nx<end_r - i && ny>=start_c + i -1 && ny<end_c - i) {
-					change[x][y] = map[nx][ny];
-					x = nx;
-					y = ny;
-					nx = x + dx[d];
-					ny = y + dy[d];
+				int nx = cur_x + dx[d];
+				int ny = cur_y + dy[d];
+				while (nx>=x && nx<end_x - i && ny>=y && ny<end_y - i) {
+					change[cur_x][cur_y] = map[nx][ny];
+					cur_x = nx;
+					cur_y = ny;
+					nx = cur_x + dx[d];
+					ny = cur_y + dy[d];
 				}
 			}
-			change[start_r + i -1][start_c + i] = temp;
+			// 모든 이동이 다 끝났으면 마지막 값 이동시키기
+			// 처음 시작 좌표 값을 오른쪽으로 한 칸 이동
+			change[x][y+1] = temp;
 		}
 	}
 	
@@ -106,10 +115,10 @@ public class Main_17406_김정효 {
 		return result;
 	}
 	
-	private static void copy(int[][] arr) {
+	private static void copy(int[][] ori, int[][] arr) {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				map[i][j] = arr[i][j];
+				ori[i][j] = arr[i][j];
 			}
 		}
 	}
