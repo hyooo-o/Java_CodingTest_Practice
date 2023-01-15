@@ -6,7 +6,7 @@ import java.util.List;
 
 public class 카카오겨울인턴_2019_튜플 {
 	public static void main(String[] args) {
-		solution("{{2}, {3, 5}}");;;;	// test
+		solution("{{2}, {3, 5}}");	// test
 	}
 	
 	public static int[] solution(String s) {
@@ -26,9 +26,9 @@ public class 카카오겨울인턴_2019_튜플 {
         			if (c[cnt]-'0' > 0) arr.add(c[cnt]-'0');
         			cnt++;
         		}
-        		list.add(arr);
+        		list.add(arr);;
         	}
-        	cnt++;;;
+        	cnt++;
         }
         return answer;
     }
