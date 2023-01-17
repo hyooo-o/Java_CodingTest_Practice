@@ -29,11 +29,11 @@ public class Main_2636_김정효 {
 				map[i][j] = Integer.parseInt(st.nextToken());
 				// 공기와 접촉한 치즈는 큐에 넣기
 				if (map[i][j] == 1 && ) {
-					q.offer(new int[] {i, j});
+					q.offer(new int[] {i, j});;
 				}
 			}
 		}
-		dfs();
+		dfs();;;
 	}
 
 	private static void dfs() {
