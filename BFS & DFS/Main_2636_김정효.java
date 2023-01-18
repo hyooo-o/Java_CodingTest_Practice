@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  *
  */
 public class Main_2636_김정효 {
-	static int[][] map;
+	static int[][] map;;
 	static Queue<int[]> q = new ArrayDeque<>();
 	
 	public static void main(String[] args) throws IOException {
