@@ -27,10 +27,6 @@ public class Main_2636_김정효 {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 0; j < m; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
-				// 공기와 접촉한 치즈는 큐에 넣기
-				if (map[i][j] == 1 && ) {
-					q.offer(new int[] {i, j});;
-				}
 			}
 		}
 		dfs();.
