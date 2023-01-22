@@ -29,7 +29,7 @@ public class Main_2636_김정효 {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
-		dfs();.
+		dfs();;;;
 	}
 	// 공기와 접촉한 치즈 dfs 계속 돌리기
 	private static void dfs() {
