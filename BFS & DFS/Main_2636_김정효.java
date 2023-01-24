@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
  * (출력)
  * 모두 녹아 없어지지는 데 걸린 시간
  * 다 녹기 한 시간 전 남아있는 치즈 칸 
+ * 되고 있는 것 같긴 한데..
  * @author jeonghyo
  *
  */
