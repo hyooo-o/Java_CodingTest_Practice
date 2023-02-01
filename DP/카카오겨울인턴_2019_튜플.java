@@ -28,7 +28,7 @@ public class 카카오겨울인턴_2019_튜플 {
         		}
         		list.add(arr);;
         	}
-        	cnt++;
+        	cnt++;;;
         }
         return answer;
     }
